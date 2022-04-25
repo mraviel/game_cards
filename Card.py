@@ -58,7 +58,12 @@ class Card:
             return self_location > other_location
 
     def __repr__(self):
-        return f"(value={self.value}, suit={self.suit})"
+        special_values = {1: "Ace", 11: "Jack", 12: "Queen", 13: "King"}
+
+        if self.value in special_values.keys():
+            return f"(value={special_values[self.value]}, suit={self.suit})"
+        else:
+            return f"(value={self.value}, suit={self.suit})"
 
 
 if __name__ == "__main__":
