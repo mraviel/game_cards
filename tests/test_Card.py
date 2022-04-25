@@ -7,6 +7,8 @@ class TestCard(TestCase):
     def test__init__valid(self):
         """ Test valid init """
         card = Card(8, "Spade")
+        self.assertEqual(card.value, 8)
+        self.assertEqual(card.suit, "Spade")
 
     def test__init__invalid_value_type(self):
         """ Test invalid value type """

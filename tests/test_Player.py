@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, mock
 from Player import Player
 from DeckOfCards import DeckOfCards
 from Card import Card
@@ -11,7 +11,9 @@ class TestPlayer(TestCase):
 
     def test__init__valid(self):
         """ Test valid name and num of cards per player """
-        player = Player("alon", 18)
+        self.assertEqual(self.player.name, "Alon")
+        self.assertEqual(self.player.cards_per_player, 15)
+        self.assertEqual(self.player.hand, [])
 
     def test__init__invalid_name_type(self):
         """ Test invalid name type wrong"""
@@ -41,6 +43,13 @@ class TestPlayer(TestCase):
         self.assertEqual(len(self.player.hand), 15)
         self.assertEqual(len(deck.cards), 37)
 
+    @mock.patch("DeckOfCards.DeckOfCards.deal_one", return_value=Card(2, "Dimond"))
+    def test_set_hand_valid_is_card_from_deal_one_in_player_hand(self, mock_name):
+        """ Test valid is card from deal_one in player hand """
+        deck = DeckOfCards()
+        self.player.set_hand(deck)
+        self.assertIn(Card(2, "Dimond"), self.player.hand)
+
     def test_set_hand_invalid_deck_card(self):
         """ Test invalid deck is not type deck of cards """
         deck = 52
@@ -69,10 +78,10 @@ class TestPlayer(TestCase):
 
     def test_add_card_valid(self):
         """ Test valid """
-        card=Card(8,"Dimond")
+        card=Card(8, "Dimond")
         self.player.add_card(card)
         self.assertEqual(len(self.player.hand), 1)
-        self.assertIn(card, self.player.hand )
+        self.assertIn(card, self.player.hand)
 
     def test_add_card_invalid_card_type(self):
         """ Test invalid card type """
@@ -82,7 +91,7 @@ class TestPlayer(TestCase):
 
     def test_add_card_invalid_card_not_in_hand(self):
         """ Test invalid card not in hand """
-        card=Card(8, "Dimond")
+        card = Card(8, "Dimond")
         with self.assertRaises(AssertionError):
             self.player.add_card(card)
             self.assertNotIn(card, self.player.hand)

@@ -38,18 +38,16 @@ class TestCardGame(TestCase):
         with self.assertRaises(ValueError):
             CardGame("alon", "aviel", 27)
 
-    # צריך מוק
-
     def test___new_game_valid(self):
         """ Test valid"""
 
-        deck = DeckOfCards()  # Unshffeld deck
+        deck = DeckOfCards()  # Unshuffled deck
         count = 0
         for i in range(3):
             if deck.cards == self.cardGame.deck.cards:
                 count += 1
 
-        # Is deck shffeld?
+        # Is deck shuffled?
         self.assertNotEqual(count, 3)
 
         # Is player's hand have cards_per_player number of cards?
@@ -65,7 +63,7 @@ class TestCardGame(TestCase):
             if deck.cards == self.cardGame.deck.cards:
                 count += 1
 
-        # Is deck shffeld?
+        # Is deck shuffled?
         with self.assertRaises(AssertionError):
             self.assertEqual(count, 3)
 
@@ -93,8 +91,6 @@ class TestCardGame(TestCase):
         self.assertGreater(len(self.cardGame.player2.hand), len(self.cardGame.player1.hand))
         self.assertEqual(self.cardGame.player2, self.cardGame.get_winner())
 
-
-
     def test_get_winner_invalid(self):
         """ Test invalid, Check if both players with the same amount of cards, Equal """
         with self.assertRaises(AssertionError):
@@ -104,7 +100,7 @@ class TestCardGame(TestCase):
             self.assertIsNotNone(self.cardGame.get_winner())
 
     def test_get_winner_invalid_player1_win(self):
-        """ Test invalid Check that player1 have more cards than player2"""
+        """ Test invalid Check that player1 have more cards than player2 """
         card = Card(4, "Dimond")
         self.cardGame.player1.add_card(card)
 
