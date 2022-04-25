@@ -23,7 +23,7 @@ class DeckOfCards:
 
     def deal_one(self):
         """ Pick one random card from cards, Delete from cards. Return the pop card: (Card). """
-
+        
         return self.cards.pop(self.cards.index(choice(self.cards)))
 
 

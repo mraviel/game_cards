@@ -22,6 +22,13 @@ class Card:
         self.value = value
         self.suit = suit
 
+    def __eq__(self, other):
+        """ Check for identical card. """
+        if type(other) != Card:
+            raise TypeError("Must be type Card")
+
+        return self.value == other.value and self.suit == other.suit
+
     def __gt__(self, other):
         """ Card will be greater by value. """
 
@@ -62,7 +69,5 @@ if __name__ == "__main__":
     print(card1 > card2)
 
     print(card1)
-
-
 
 

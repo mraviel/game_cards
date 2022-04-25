@@ -46,9 +46,6 @@ class Player:
         self.hand.append(card)
 
 
-
-
-
 if __name__ == "__main__":
 
     player1 = Player("aviel", 12)
