@@ -36,6 +36,8 @@ class TestDeckOfCards(TestCase):
         """ Test valid """
         deck_cards = self.deck.cards.copy()
         self.deck.cards_shuffle()
+
+        # Try 3 times to shuffle.
         count = 0
         for i in range(3):
             if deck_cards == self.deck.cards:
@@ -58,6 +60,7 @@ class TestDeckOfCards(TestCase):
     def test_deal_one_valid(self):
         """ Test valid """
 
+        self.assertEqual(len(self.deck.cards), 52)  # Is deck full?
         card = self.deck.deal_one()
 
         # Check that 1 card has been deleted.

@@ -16,12 +16,14 @@ if __name__ == "__main__":
 
     for i in range(1, 11):
 
+        # Players throw cards
         player1_card = cardGame.player1.get_card()
         player2_card = cardGame.player2.get_card()
 
         print(f"         {i}")
-        print(f"player1 throw:{player1_card}\nplayer2 throw:{player2_card}")
+        print(f"{name1} throw:{player1_card}\n{name2} throw:{player2_card}")
 
+        # How's win the round?
         if player1_card > player2_card:
             cardGame.player1.add_card(player1_card)
             cardGame.player1.add_card(player2_card)

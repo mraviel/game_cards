@@ -65,6 +65,13 @@ class TestPlayer(TestCase):
         self.assertEqual(len(self.player.hand), 14)
         self.assertNotIn(card, self.player.hand)
 
+    def test_get_card_valid_but_no_hand(self):
+        """ Test valid, But player hand is empty """
+
+        card = self.player.get_card()
+        self.assertEqual(len(self.player.hand), 0)
+        self.assertIsNone(card)
+
     def test_get_card_invalid(self):
         """ Test invalid """
         deck = DeckOfCards()

@@ -41,7 +41,7 @@ class TestCardGame(TestCase):
     def test___new_game_valid(self):
         """ Test valid"""
 
-        deck = DeckOfCards()  # Unshuffled deck
+        deck = DeckOfCards()  # Un-shuffled deck
         count = 0
         for i in range(3):
             if deck.cards == self.cardGame.deck.cards:
@@ -57,7 +57,7 @@ class TestCardGame(TestCase):
     def test___new_game_invalid(self):
         """ Test invalid """
 
-        deck = DeckOfCards()  # Unshffeld deck
+        deck = DeckOfCards()  # Un-shffeld deck
         count = 0
         for i in range(3):
             if deck.cards == self.cardGame.deck.cards:
@@ -72,7 +72,7 @@ class TestCardGame(TestCase):
             self.assertNotEqual(len(self.cardGame.player1.hand), self.cardGame.player1.cards_per_player)  # 20
             self.assertNotEqual(len(self.cardGame.player2.hand), self.cardGame.player2.cards_per_player)  # 20
 
-    def test_get_winner_valid(self):
+    def test_get_winner_valid_tie(self):
         """ Test valid, Check if both players with the same amount of cards, Equal """
         self.assertEqual(len(self.cardGame.player1.hand), len(self.cardGame.player2.hand))
         self.assertIsNone(self.cardGame.get_winner())

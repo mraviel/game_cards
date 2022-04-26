@@ -46,8 +46,8 @@ class Card:
 
         else:
 
-            # Dimond is the lowest And Club is highest.
-            cards_type = ["Dimond", "Spade", "Heart", "Club"]
+            # Dimond is the lowest And Club is highest, By index.
+            cards_type = ("Dimond", "Spade", "Heart", "Club")
 
             self_location = cards_type.index(self.suit)
             other_location = cards_type.index(other.suit)
@@ -69,7 +69,7 @@ class Card:
 if __name__ == "__main__":
 
     card1 = Card(1, "Dimond")
-    card2 = Card(2, "Dimond")
+    card2 = Card(12, "Dimond")
 
     print(card1 > card2)
 
